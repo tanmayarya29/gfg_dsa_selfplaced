@@ -3,7 +3,8 @@ using namespace std;
 #define ull unsigned long long
 
 ull factIter(int num){//O(num)//better as takes theta 1 aux space
-    int res=num;
+    if(num==0)return 1;
+    long long res=num;
     while(--num){
         res*=num;
     }
