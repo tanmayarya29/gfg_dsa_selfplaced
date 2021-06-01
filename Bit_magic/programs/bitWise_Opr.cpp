@@ -8,7 +8,7 @@ using namespace std;
      cout<<(a^b)<<endl;//same 0 diff 1
 
      cout<<(a<<b)<<endl;// ==> a*2^b
-     cout<<(a>>1)<<endl;// ==> floor(a/2^b)
+     cout<<(a>>b)<<endl;// ==> floor(a/2^b)
      unsigned c=1;
      signed d=1;//2^n-x
      cout<<(~c)<<endl;
