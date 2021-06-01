@@ -19,7 +19,7 @@ int missingOddNofromSeq(int arr[],int n){//xor of all the nos and xor 1 to n+1 (
 }
 
 int main(){
-    int arr[]={1,1,2,2,2,3,3,3,3,4,4},n=11;
+    int arr[]={9, 12, 2, 11, 2, 2, 10, 9, 12, 10, 9, 11, 2},n=13;
     cout<<findOdd(arr,n)<<endl;
 
     int arr2[]={1,4,5,2};
