@@ -10,25 +10,21 @@ using namespace std;
 
 class Solution{
     public:
-    int countSetBitBrianKern(int n){//time=set bit count
-    int res=0;
-    while(n){
-        n=(n&(n-1));//*7=111 & 6=110 = 110
-        res++;
-    }
-    return res;
-}
+    
     // n: input to count the number of set bits
     //Function to return sum of count of set bits in the integers from 1 to n.
-    int countSetBits(int n)
+    int countSetBits(int N)
     {
         // Your logic here
-        int count=0;
+        int two = 2,ans = 0;
+        int n = N;
         while(n){
-            count+=countSetBitBrianKern(n);
-            n--;
+            ans += (N/two)*(two>>1);
+            if((N&(two-1)) > (two>>1)-1) ans += (N&(two-1)) - (two>>1)+1;
+            two <<= 1;
+            n >>= 1;
         }
-        return count;
+    return ans;
     }
 };
 
