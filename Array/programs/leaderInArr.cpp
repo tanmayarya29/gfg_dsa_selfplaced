@@ -19,7 +19,7 @@ void leaderInArr(int arr[],int n){//n^2
     }
 }
 
-void leaderInArr2(int arr[],int n){//n
+vector<int> leaderInArr2(int arr[],int n){//n
     stack<int> st;
     int runningLeader=n-1;
     // cout<<arr[runningLeader]<<" ";
@@ -31,17 +31,20 @@ void leaderInArr2(int arr[],int n){//n
             st.push(arr[runningLeader]);
         }
     }
+    vector<int> res;
     while(!st.empty()){
-        cout<<st.top()<<" ";
+        // cout<<st.top()<<" ";
+        res.push_back(st.top());
         st.pop();
     }
+    return res;
 }
 
 int main(){
     int arr[]={7,10,4,10,6,5,2};
     int n=sizeof(arr)/sizeof(arr[0]);
 //    leaderInArr(arr,n);
-   leaderInArr2(arr,n);
+    leaderInArr2(arr,n);
 
 
 }

@@ -1,13 +1,10 @@
-#include <iostream>
-#include <cmath>
-#include <bits/stdc++.h> 
-#include <climits>
+#include <bits/stdc++.h>
 using namespace std;
 
 
 int maxOcc(int L[], int R[], int n)
 {	
-    	int arr[1000];
+    	int arr[1000000];
     	
     	memset(arr, 0, sizeof(arr));
 
@@ -20,7 +17,7 @@ int maxOcc(int L[], int R[], int n)
 
     	int maxm = arr[0], res = 0;
 
-    	for(int i = 1; i < 1000; i++)
+    	for(int i = 1; i < 1000000; i++)
     	{
     		arr[i] += arr[i - 1];
 
