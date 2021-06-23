@@ -12,30 +12,25 @@ class Solution{
     // n: size of array
     // Function to find the maximum index difference.
     int maxIndexDiff(int arr[], int n) 
-    { 
-        
-        // Your code here
-        int lmin[n],rmax[n];
-        lmin[0]=arr[0];
-        rmax[n-1]=arr[n-1];
+    {  
+        int lmin[n],rmax[n],maxIndx=-1;
+        lmin[0]=arr[0];rmax[n-1]=arr[n-1];
         
         for(int i=1;i<n;i++){
             lmin[i]=min(lmin[i-1],arr[i]);
         }
-        for(int i=n-2;i<=0;i++){
+        for(int i=n-2;i>=0;i--){
             rmax[i]=max(rmax[i+1],arr[i]);
         }
-        int i = 0, j = 0, maxDiff = -1;
-    while (j < n && i < n) {
-        if (lmin[i] < rmax[j]) {
-            maxDiff = max(maxDiff, j - i);
-            j = j + 1;
+        for(int i=0,j=0;i<n && j<n;){
+            if(rmax[j]>=lmin[i]){
+                maxIndx=max(maxIndx,j-i);
+                j++;
+            }else{
+                i++;
+            }
         }
-        else
-            i = i + 1;
-    }
- 
-    return maxDiff+1;
+        return maxIndx;
         
     }
 };
