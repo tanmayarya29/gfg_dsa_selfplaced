@@ -21,23 +21,7 @@ Node* newNode(int val)
 }
 
 
-
-void displayCList(Node *head)
-{
-    Node *itr = head;
-    do
-    {
-        cout << itr->data <<" ";
-        itr = itr->right;
-    } while (head!=itr);
-    cout <<endl;
-    itr=itr->left;
-    do{
-        cout<<itr->data<<" ";
-        itr=itr->left;
-    }while(head!=itr);
-    cout<<itr->data<<endl;
-}
+int maxDiff(Node *root);
 
 // Function to Build Tree
 Node* buildTree(string str)
@@ -104,9 +88,27 @@ Node* buildTree(string str)
 }
 
 
- // } Driver Code Ends
-/*Complete the function below
-Node is as follows:
+int main() {
+    int t;
+    string tc;
+    getline(cin, tc);
+    t=stoi(tc);
+    while(t--)
+    {
+        string s ;
+        getline(cin, s);
+        Node* root = buildTree(s);
+        
+        cout<<maxDiff(root)<<endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
+
+
+/* A binary tree node
+
 struct Node
 {
     int data;
@@ -117,68 +119,27 @@ struct Node
         data = x;
         left = right = NULL;
     }
-};*/
-
-class Solution
-{
-  public:
-    //Function to convert binary tree into circular doubly linked list.
-    void inOrder(Node *root, Node *&front, Node *&rear)
-{
-    if(root)
-    {
-        inOrder(root->left, front, rear);
-        if(front == NULL)
-        {
-            Node *temp = newNode(root->data);
-            front = rear = temp;
-            front->left = rear;
-            rear->right = front;
-        }
-        else
-        {
-            Node *temp = newNode(root->data);
-            temp->left = rear;
-            temp->right = front;
-            front->left = temp;
-            rear->right = temp;
-            rear = temp;
-        }
-        inOrder(root->right, front, rear);
-    }
-}
-    
-    Node *bTreeToCList(Node *root)
-    {
-        //add code here.
-        Node *front = NULL, *rear = NULL;
-        inOrder(root, front, rear);
-        return front;
-    }
 };
+ */
 
-// { Driver Code Starts.
-int main() {
-    int t;
-    string tc;
-    getline(cin, tc);
-    t=stoi(tc);
-    while(t--)
-    {
-        string s;
-        getline(cin, s);
-        Node* root = buildTree(s);
-        Solution obj;
-        Node *head = obj.bTreeToCList(root);
-        displayCList(head);
-    }
-    return 0;
+//Function to return the maximum difference between any node and its ancestor.
+int calc(Node* root,int &result)
+{
+    if(!root)
+        return INT_MAX;
+    if(!(root->left)&&!(root->right))
+        return root->data;
+    int l=calc(root->left,result);
+    int r=calc(root->right,result);
+    int m=min(l,r);
+    result=max(result,(root->data)-m);
+    return min(m,root->data);
 }
 
-
-
-
-
-
-
-  // } Driver Code Ends
+int maxDiff(Node* root)
+{
+    // Your code here 
+    int result=INT_MIN;
+    calc(root,result);
+    return result;
+}

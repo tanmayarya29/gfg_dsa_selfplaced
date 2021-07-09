@@ -1,3 +1,4 @@
+//Initial Template for C++
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -16,169 +17,124 @@ Node* newNode(int val)
     temp->data = val;
     temp->left = NULL;
     temp->right = NULL;
-
+    
     return temp;
-}
-
-
-
-void displayCList(Node *head)
-{
-    Node *itr = head;
-    do
-    {
-        cout << itr->data <<" ";
-        itr = itr->right;
-    } while (head!=itr);
-    cout <<endl;
-    itr=itr->left;
-    do{
-        cout<<itr->data<<" ";
-        itr=itr->left;
-    }while(head!=itr);
-    cout<<itr->data<<endl;
 }
 
 // Function to Build Tree
 Node* buildTree(string str)
-{
+{   
     // Corner Case
     if(str.length() == 0 || str[0] == 'N')
-        return NULL;
-
-    // Creating vector of strings from input
+            return NULL;
+    
+    // Creating vector of strings from input 
     // string after spliting by space
     vector<string> ip;
-
+    
     istringstream iss(str);
     for(string str; iss >> str; )
         ip.push_back(str);
-
+        
     // Create the root of the tree
     Node* root = newNode(stoi(ip[0]));
-
+        
     // Push the root to the queue
     queue<Node*> queue;
     queue.push(root);
-
+        
     // Starting from the second element
     int i = 1;
     while(!queue.empty() && i < ip.size()) {
-
+            
         // Get and remove the front of the queue
         Node* currNode = queue.front();
         queue.pop();
-
+            
         // Get the current node's value from the string
         string currVal = ip[i];
-
+            
         // If the left child is not null
         if(currVal != "N") {
-
+                
             // Create the left child for the current node
             currNode->left = newNode(stoi(currVal));
-
+                
             // Push it to the queue
             queue.push(currNode->left);
         }
-
+            
         // For the right child
         i++;
         if(i >= ip.size())
             break;
         currVal = ip[i];
-
+            
         // If the right child is not null
         if(currVal != "N") {
-
+                
             // Create the right child for the current node
             currNode->right = newNode(stoi(currVal));
-
+                
             // Push it to the queue
             queue.push(currNode->right);
         }
         i++;
     }
-
+    
     return root;
 }
 
+// Your are required to complete this function
+int countSubtreesWithSumX(Node* root, int x);
 
- // } Driver Code Ends
-/*Complete the function below
-Node is as follows:
+int main()
+{
+  int t;
+  cin>>t;
+  getchar();
+  while (t--)
+  {
+     string s;
+     getline(cin,s);
+     Node* root = buildTree(s);
+     
+     int x;
+     cin>>x;
+     getchar();
+     cout << countSubtreesWithSumX(root, x)<<endl;
+  }
+  return 0;
+}
+
+// } Driver Code Ends
+
+
+//User function Template for C++
+/*
+Structure of the node of the binary tree is as
 struct Node
 {
     int data;
     struct Node* left;
     struct Node* right;
-    
-    Node(int x){
-        data = x;
-        left = right = NULL;
-    }
-};*/
-
-class Solution
-{
-  public:
-    //Function to convert binary tree into circular doubly linked list.
-    void inOrder(Node *root, Node *&front, Node *&rear)
-{
-    if(root)
-    {
-        inOrder(root->left, front, rear);
-        if(front == NULL)
-        {
-            Node *temp = newNode(root->data);
-            front = rear = temp;
-            front->left = rear;
-            rear->right = front;
-        }
-        else
-        {
-            Node *temp = newNode(root->data);
-            temp->left = rear;
-            temp->right = front;
-            front->left = temp;
-            rear->right = temp;
-            rear = temp;
-        }
-        inOrder(root->right, front, rear);
-    }
-}
-    
-    Node *bTreeToCList(Node *root)
-    {
-        //add code here.
-        Node *front = NULL, *rear = NULL;
-        inOrder(root, front, rear);
-        return front;
-    }
 };
-
-// { Driver Code Starts.
-int main() {
-    int t;
-    string tc;
-    getline(cin, tc);
-    t=stoi(tc);
-    while(t--)
-    {
-        string s;
-        getline(cin, s);
-        Node* root = buildTree(s);
-        Solution obj;
-        Node *head = obj.bTreeToCList(root);
-        displayCList(head);
-    }
-    return 0;
+*/
+//Function to count number of subtrees having sum equal to given sum.
+int helper(Node* root, int x, int &count){
+    if(root==NULL) 
+        return 0;
+    int ls=helper(root->left,x,count);
+    int rs=helper(root->right,x,count);
+    if(ls+rs+root->data == x)
+        count++;
+    return ls+rs+root->data;
 }
 
-
-
-
-
-
-
-  // } Driver Code Ends
+int countSubtreesWithSumX(Node* root, int X)
+{
+	// Code here
+	int count=0;
+    helper(root,X,count);
+    return count;
+}
