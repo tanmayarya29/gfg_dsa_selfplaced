@@ -14,13 +14,29 @@ using namespace std;
 //1. merge two sorted array
 //time O(m+n) and aux O(m+n)
 void merge(int a[],int b[],int n,int m){
+    int res[n+m];
     int i=0,j=0;
     while(i<n && j<m){
-        if(a[i]<=b[j])cout<<a[i++]<<" ";
-        else cout<<b[j++]<<" ";
+        if(a[i]<=b[j]){
+            res[i+j]=a[i];
+            i++;
+        }
+        else{
+            res[i+j]=b[j];
+            j++;
+        }
     }
-    while(i<n)cout<<a[i++]<<" ";
-    while(j<m)cout<<b[j++]<<" ";
+    while(i<n){
+        res[i+j]=a[i];
+        i++;
+    }
+    while(j<m){
+        res[i+j]=b[j];
+        j++;
+    }
+    for(int i=0;i<n+m;i++){
+        cout<<res[i]<<" ";
+    }
 }
 
 int main(){

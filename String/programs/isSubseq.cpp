@@ -12,7 +12,7 @@ bool isSubseq(string &s1,string &s2)
     return (j==m); 
 }
 int main(){
-    string s1="civic",s2="cc";
+    string s1="civic",s2="cvc";
     if(isSubseq(s1,s2))
         cout<<"Yes";
     else

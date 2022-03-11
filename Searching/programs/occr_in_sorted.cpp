@@ -8,7 +8,7 @@ int index_of_first(int arr[],int elem,int n){
     if(elem>arr[mid]){
         low=mid+1;
     }
-    else if(elem>arr[mid]){
+    else if(elem<arr[mid]){
         high=mid-1;
     }
     else
