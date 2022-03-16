@@ -1,24 +1,20 @@
+//ALTERNATE SORTING
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> searchRange(vector<int>& nums, int target){
-    int n=nums.size();
-    int l=0,r=n-1;
-    while(l<=r){
-        int mid=(l+r)/2;
-        if(nums[mid]<target)
-            l=mid+1;
-        else
-            r=mid-1;
-        if(l==r && nums[l]==target)
-            break;
+void alternateSorting(int arr[],int n){
+    sort(arr,arr+n);//1,1,2,3,4,16->16,1,4,1,3,2
+    int i=0,j=n-1;
+    while(i<j){
+        cout<<arr[j]<<" ";
+        j--;
+        cout<<arr[i]<<" ";
+        i++;
     }
-    return {-1,-1};
 }
 
 int main(){
-    vector<int> nums={5,7,7,8,8,10};
-    int target=8;
-    vector<int> ans=searchRange(nums,target);
-    cout<<ans[0]<<" "<<ans[1]<<endl;
+    int arr[]={1,2,3,4,5,6,7,8,9,10};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    alternateSorting(arr,n);
 }
