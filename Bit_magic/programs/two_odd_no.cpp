@@ -13,7 +13,7 @@ void find2Odd(int arr[],int n){
 }
 
 int main(){
-    int arr[]={1,1,2,3,3,4,7,7};
-    int n=8;
+    int arr[]={1,2,1,3};
+    int n=sizeof(arr)/sizeof(arr[0]);
     find2Odd(arr,n);
 }

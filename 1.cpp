@@ -1,20 +1,30 @@
-//ALTERNATE SORTING
 #include<bits/stdc++.h>
 using namespace std;
 
-void alternateSorting(int arr[],int n){
-    sort(arr,arr+n);//1,1,2,3,4,16->16,1,4,1,3,2
-    int i=0,j=n-1;
-    while(i<j){
-        cout<<arr[j]<<" ";
-        j--;
-        cout<<arr[i]<<" ";
-        i++;
-    }
+long long solve(int x, vector<int> c, int n) {
+long long dp[n-1][4];
+for(int i=0;i<n-1;i++){
+for(int j=0;j<4;j++)
+dp[i][j] = 1e12;
+}
+
+dp[0][0] = c[0];
+
+for(int i=1;i<n-1;i++){
+dp[i][0] = min({dp[i-1][0],dp[i-1][1],dp[i-1][2],dp[i-1][3]})+c[i];
+dp[i][1] = dp[i-1][0]+x;
+dp[i][2] = dp[i-1][1]+x;
+dp[i][3] = dp[i-1][2]+x;
+}
+
+return min({dp[n-2][0],dp[n-2][1],dp[n-2][2],dp[n-2][3]}) + c[n-1];
+
 }
 
 int main(){
-    int arr[]={1,2,3,4,5,6,7,8,9,10};
-    int n=sizeof(arr)/sizeof(arr[0]);
-    alternateSorting(arr,n);
+    string s;
+cin>>s;
+sort(s.begin(),s.end());
+cout<<s[0];
 }
+
