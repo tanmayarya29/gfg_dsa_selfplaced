@@ -9,7 +9,7 @@ def sol(arr):
     #find pairs
     for i in range(len(arr)-1):
         diff = arr[i+1] - arr[i]
-        if diff == min_diff:
+        if diff == min_diff: 
             print(str(arr[i])+" "+str(arr[i+1]))
 
 if __name__ == "__main__":
