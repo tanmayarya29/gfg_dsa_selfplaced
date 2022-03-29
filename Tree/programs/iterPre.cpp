@@ -30,7 +30,7 @@ void preorderIterative(Node* root)
 	}
 }
 
-void preorderIterative2(Node* root)//space optimized
+void preorderIterative2(Node* root)//space optimized O(h)
 {
     if (root == NULL)
         return;
