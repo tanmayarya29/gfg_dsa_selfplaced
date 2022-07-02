@@ -1,44 +1,115 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./1.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div
-      style="
-        width: 200px;
-        height: 200px;
-        border: 50px solid blue;
-        background-color: red;
-        padding: 0;
-        display: flex;
-      "
-    >
-      <div
-        style="
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-          background-color: grey;
-          position: relative;
-          left:70px;
-          top:-px;
-        "
-      ></div>
-      <div
-        style="
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-          background-color: white;
-          position: relative;
-          left:-50px;
-          top:70px;
-        "
-      ></div>
-    </div>
-  </body>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+    }
+
+    .menu li {
+      float: left;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      font-size: medium;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111111;
+    }
+    .big-div{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul>
+    <li><a href="./demo.php">Demo</a></li>
+    <li><a href="./index.php">Index</a></li>
+    <li><a href="./jugnu.php">Jugnu</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+<div class="big-div">
+
+  <div style="display:inline-block;width:5% ;height:100px;">
+    <ol style="list-style-type:none;padding-left:0px; " class="menu;">
+      <li >Coffee</li>
+      <li >Tea</li>
+      <li>Milk</li>
+    </ol>
+  </div>
+
+<div style="display:inline-block">
+  <button style="background-color:aqua;"><a href='./img/a1.jpg' style="font-weight:bold ;">Press Me</a></button>
+</div>
+</div>
+
+
+
+  <table style=" text-align:center;">
+    <tr>
+      <th><a href='jsahd'>Coffee</a></th>
+      <th>Tea</th>
+      <td>Milk</td>
+      <td><img src="./img/aa.jpg" alt="Nothinh New" style="width:50px;height:50px;"></td>
+    </tr>
+  </table>
+
+  <iframe src="./img/a1.jpg" title="Maths Video" style="border:inline ;height:500;width:500;">
+  </iframe>
+
+  <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+    Click me to display Date and Time.</button>
+
+  <p id="demo"></p>
+
+  <script>
+    function light(sw) {
+      var pic;
+      if (sw == 0) {
+        pic = "pic_bulboff.jpg"
+      } else {
+        pic = "pic_bulbon.jpg"
+      }
+      document.getElementById('myImage').src = pic;
+    }
+  </script>
+
+  <img id="myImage" src="./img/pic_bulbon.jpg" width="100" height="180">
+
+
+
+  <p><button type="button" onclick="light(1)">Light On</button>
+    <button type="button" onclick="light(0)">Light Off</button>
+  </p>
+
+
+
+  <button id="c1"><a href='./img/pic_bulboff.jpg'>Bulb Off</a></button><button><a href='./img/pic_bulbon.jpg'>Bulb On</a></button><iframe id=#c1; src="./img/pic_bulboff.jpg" width="150" height="180" style="border:none ;"></iframe>
+
+
+
+
+</body>
+
 </html>
