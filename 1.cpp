@@ -1,14 +1,17 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define ll long long
-#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-#define endl "\n"
+#include <stdio.h>
+
+struct p
+
+{
+int x;
+char y;
+
+};
 
 int main(){
-    fast;
-    int t;
-    cin>>t;
-    while(t--){
-        
-    }
+struct p p1[] = {1, 92, 3, 94, 5, 96};
+struct p *ptr1 = p1;
+int x = (sizeof(p1) / sizeof(struct p));
+printf("%d %d\n", ptr1->x, (ptr1 + x - 1)->x);
+
 }
