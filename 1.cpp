@@ -3,39 +3,26 @@ using namespace std;
 #define ll long long int
 #define nl "\n"
 
-string sol(int arr[],int n,int iq){
-    string res="";
+bool sol(string a,string b,int n){
+    if(a==b)return true;
+    int b1=0,a1=0;
     for(int i=0;i<n;i++){
-        if(arr[i]<=iq){
-            res+="1";
+        if(b[i]=='1'){
+            b1++;
         }
-        else{
-            res+="0";
-        }
-    }
-    for(int i=n-1;i>=0;i--){
-        if(arr[i]>iq && iq!=0){
-            res[i]='2';
-            --iq;
+        if(a[i]=='1'){
+            a1++;
         }
     }
-    int lastOccuranceOf1=-1;
-    for(int i=n-1;i>=0;i--){
-        if(res[i]=='2'){
-            lastOccuranceOf1=i;
+    if(b1==0)return true;
+    //
+    bool res=true;
+    char curr=b[0];
+    for(int i=1;i<n;i++){
+        if(b[i]==curr){
             break;
         }
-    }
-    if(lastOccuranceOf1==-1)return res;
-    
-    for(int i=lastOccuranceOf1+1;i<n;i++){
-            res[i]='0';
-    }
-    
-    for(int i=0;i<n;i++){
-        if(res[i]=='2'){
-            res[i]='1';
-        }
+        curr=='0'?curr='1':curr='0';
     }
     return res;
 }
@@ -44,11 +31,16 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n,iq;
-        cin>>n>>iq;
-        int arr[n];
-        for(int i=0;i<n;i++)cin>>arr[i];
-        cout<<sol(arr,n,iq)<<endl;
+       int n;
+       cin>>n;
+       string a,b;
+         cin>>a>>b;
+            if(sol(a,b,n)){
+                cout<<"YES"<<nl;
+            }
+            else{
+                cout<<"NO"<<nl;
+            }
     }
     return 0;
 }
