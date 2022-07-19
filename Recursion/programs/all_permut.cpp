@@ -9,7 +9,7 @@ void permut(string s,int i=0){
         swap(s[i],s[j]);
         permut(s,i+1);
         swap(s[i],s[j]);
-    }
+    }//
 }
 int main(){
     string s="abc";//n! permutations
